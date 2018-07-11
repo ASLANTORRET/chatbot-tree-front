@@ -1,0 +1,181 @@
+.node circle {
+    fill: #fff;
+    stroke: steelblue;
+    stroke-width: 1.5px;
+}
+
+.node text {
+    font-size:10px;
+    font-family:sans-serif;
+}
+
+.link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 1.5px;
+}
+
+.templink {
+    fill: none;
+    stroke: red;
+    stroke-width: 3px;
+}
+
+.ghostCircle.show{
+    display:block;
+}
+
+.ghostCircle, .activeDrag .ghostCircle{
+    display: none;
+}
+
+.node {
+    font: 11px sans-serif;
+}
+
+.node.notFound {
+/* not using opaciy to avoid conflicts when reverting related node filter */
+  fill: #ddd;
+}
+
+.node.notFound circle {
+  stroke: #ddd!important;
+  fill: #ddd!important;
+}
+
+.panel-action {
+    padding: 5px;
+    text-align: center;
+}
+
+.details {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 280px;
+}
+
+/*.details ul {
+    padding: 0 20px;
+}*/
+
+.details ul li {
+    margin-left: 0px;
+}
+
+.panel-heading input {
+    margin: -7px -12px;
+}
+
+.properties input {
+    border: 1px solid #CCC;
+    border-radius: 4px;
+}
+
+.properties.edit ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.properties.edit ul ul {
+    margin: 0 0 8px 8px;
+}
+
+.properties.edit .glyphicon {
+    font-size: 12px;
+    color: #bce8f1;    
+}
+
+.properties.edit .remove {
+    float: left;
+    margin-right: 5px;
+}
+.properties.edit li .remove {
+    top: 5px;
+}
+
+.filters {
+  width: 200px;  
+}
+
+.main {
+    width: 200px;
+}
+
+.leftPanel{
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.filters .btn {
+  margin: 1px;
+  line-height: 1.3;
+}
+
+.json-upate-label {
+    padding: 15px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.json-upate-label a {
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#json-data {
+    font-size: 12px;
+    font-family: monospace;
+    width: 100%;
+    height: 250px;
+}
+
+#node-active {
+    font-size: 14px;
+    font-weight: bold;
+}
+#node-active text {
+    fill: rgb(70, 130, 180);
+}
+
+#graph {
+    width: 100%;
+    margin: auto;
+}
+.details p.message {
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: red;
+}
+button.emoji-btn {
+    border: none;
+    padding: 0;
+    position: relative;
+    right: 0px;
+    top: -18px;
+    background: transparent;
+}
+
+pre.textarea-options {
+    padding: 6px;
+    height: 30px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    overflow: hidden;
+}
+.message-img {
+    position: relative;
+    top: -34px;
+}
+.message-img .remove.glyphicon.glyphicon-remove {
+    position: relative;
+    left: 57px;
+    top: -15px;
+    font-size: 14px;
+    color: #ca2323;
+}
+
+input#imageInputFile {
+    width: 160px;
+}

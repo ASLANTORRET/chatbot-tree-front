@@ -1,0 +1,40 @@
+<div class="details panel panel-info">
+    <div class="panel-heading">{{ node.name }}</div>
+    <div class="panel-body">
+
+        <h5>Надпись</h5>
+        <div class="url" ng-if="node.titles.RU">
+            <div class="panel">RU: {{ node.titles.RU }}</div>
+        </div>
+
+        <div class="url" ng-if="node.titles.UZ">
+            <div class="panel">{{ node.titles.UZ }}</div>
+        </div>
+
+        <h5>Сообщение</h5>
+        <div class="comments panel panel-default" ng-if="node.descriptions.RU">
+            <div class="panel-body">RU: {{ node.descriptions.RU }}</div>
+        </div>
+
+        <div class="comments panel panel-default" ng-if="node.descriptions.UZ">
+            <div class="panel-body">UZ: {{ node.descriptions.UZ }}</div>
+        </div>
+
+        <div class="url" ng-if="node.url">
+            <a href="{{ node.url }}">{{ node.url }}</a>
+        </div>
+        
+        <div class="action" ng-if="node.action">
+            <div>Действие: {{ node.action }}</div>
+        </div>
+
+        <!-- <div class="properties" ng-if="node.details.Actions">
+            <h5>Действие</h5>
+            <ul>
+                <li ng-repeat="action in node.details.Actions">
+                    {{ action }}
+                </li>
+            </ul>
+        </div> -->
+    </div>
+</div>

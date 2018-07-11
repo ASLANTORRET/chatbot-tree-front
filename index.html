@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Beeline Chat Bot Interface</title>
+        <meta name="description" content="">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/vendor/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/tree.css" />
+        <link rel="stylesheet" href="css/vendor/emoji/style.css" />
+    </head>
+    <body class="twemojified">
+        <div class="container-fluid">
+            <div ng-app="ChartsApp" id="chartId">
+
+                <h1 class="text-center">Интерфейс чат бота</h1>
+
+                <div class="leftPanel">
+                    <div ng-controller="undoCtrl">
+                        <ng-include src="'js/angular.architectureTree/templates/main-block.html'"></ng-include>
+                    </div>
+
+                    <div ng-controller="filterCtrl">
+                        <ng-include src="'js/angular.architectureTree/templates/filter.html'"></ng-include>
+                    </div>
+                </div>
+
+                <div ng-controller="chartCtrl">
+                    <tree-chart data="data" diameter="960"></tree-chart>
+                </div>
+
+                <div ng-controller="panelCtrl">
+                    <div id="panel">
+                        <div ng-if="detail">
+                            <ng-include src="'js/angular.architectureTree/templates/panel-detail.html'"></ng-include>
+                        </div>
+
+                        <div ng-if="edit">
+                            <ng-include src="'js/angular.architectureTree/templates/panel-edit.html'"></ng-include>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal fade" id="emojiModal" tabindex="-1" role="dialog" aria-labelledby="emojiModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="emojiModalLabel">Выберите смайлик</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <header class="site-header">
+                                <!--<button type="button" class="button pull-right js-hide-text">Toggle text</button>-->
+                                <input type="search" class="input-search speedy-filter" placeholder="Search">
+                                <a href="#" class="button js-clear-search clear-search">❌</a>
+                                <a href="#face" class="mojigroup button">
+                                    😊
+                                </a>
+                                <a href="#animal" class="mojigroup button">
+                                    🐈
+                                </a>
+                                <a href="#transportation" class="mojigroup button">
+                                    🚗
+                                </a>
+                                <a href="#food" class="mojigroup button">
+                                    🍱
+                                </a>
+                                <a href="#fruit" class="mojigroup button">
+                                    🍎
+                                </a>
+                                <a href="#photo" class="mojigroup button">
+                                    🌁
+                                </a>
+                            </header>
+
+                            <section class="list">
+                                <ul class="emojis-container" data-dismiss="modal">
+                                </ul>
+
+                                <div class="loading">
+                                    Loading
+                                </div>
+
+                                <div class="no-results">
+                                    <span class="text-big">😭</span>
+                                    <br><div class="no-results-text">Ничего не найдено</div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <!--<script src="js/vendor/angular.js"></script>-->
+        <script src="js/vendor/angular.min.js"></script>
+        <script src="js/d3.architectureTree.js"></script>
+        <script src="js/angular.architectureTree/app.js"></script>
+        <script src="js/angular.architectureTree/controllers/chart.js"></script>
+        <script src="js/angular.architectureTree/controllers/filter.js"></script>
+        <script src="js/angular.architectureTree/controllers/json-data.js"></script>
+        <script src="js/angular.architectureTree/controllers/panel.js"></script>
+        <script src="js/angular.architectureTree/controllers/undo.js"></script>
+        <script src="js/angular.architectureTree/directives/tree-chart.js"></script>
+        <script src="js/angular.architectureTree/directives/init-focus.js"></script>
+        <script src="js/angular.architectureTree/directives/unique.js"></script>
+        <script src="js/angular.architectureTree/directives/upload-file.js"></script>
+        <script src="js/angular.architectureTree/services/data.js"></script>
+        <script src="js/angular.architectureTree/services/bus.js"></script>
+        <script src="js/vendor/jquery-3.3.1/jquery.min.js"></script>
+        <script src="js/vendor/bootstrap-3.3.7/bootstrap.min.js"></script>
+        <script src="js/vendor/emoji/jquery.js"></script>
+        <script src="js/vendor/emoji/stuff.js"></script>
+        <script src="js/vendor/emoji/hasAppleColorEmoji/hasAppleColorEmoji.js"></script>
+        <script src="js/vendor/emoji/search.js"></script>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+<div class="filters panel panel-default">
+  <div class="panel-heading">Поиск</div>
+  <div class="panel-body">
+    <form id="filter_form">
+      <input name="name" type="text" class="form-control" placeholder="Поиск по надписи" ng-model="$parent.nameFilter"/>
+      <div id="actions">
+        <h5>Действия</h5>
+        <a ng-repeat="action in actions" class="btn btn-default btn-xs" ng-click="toggleActionFilter(action)" ng-class="{'btn-primary': isActionInFilter(action) }">{{ action }}</a>
+      </div>      
+    </form>
+  </div>
+</div>

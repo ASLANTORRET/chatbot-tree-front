@@ -1,0 +1,141 @@
+<form name="editForm" ng-submit="editForm.myInput.$valid && editNode(editForm, $event)">
+    <div class="details panel panel-info">
+        <div class="panel-heading">
+            <input type="text" ng-model="node.name" name="myInput" class="form-control" required unique/>
+            <p ng-show="editForm.myInput.$invalid" class="message" >Имя должно быть уникальным</p>
+        </div>
+        <div class="panel-body">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#l1">Узбекский</a></li>
+                <li><a data-toggle="tab" href="#l2">Русский</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="l1" class="tab-pane fade in active">
+                    <h4>Контент на узбекском</h4>
+                    <div class="properties edit">
+                        <h5>Надпись
+                            <label class="pull-right">
+                                <input type="checkbox" ng-model="node.clear" name="options" autocomplete="off"> Растянуть
+                            </label>
+                        </h5>
+
+                        <div class="input-group input-group-sm">
+                            <input type="text" class="form-control" id="title_uz" ng-model="node.titles.UZ" init-focus required/>
+                            <span class="input-group-btn">
+                                <button type="button" data-toggle="modal" class="btn btn-default" onclick="window.fieldId='title_uz';" data-target="#emojiModal">😊</button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="properties edit">
+                        <h5>Сообщение</h5>
+                        <div class="input-group input-group-sm" style="width: 100%;">
+                            <textarea rows="5" style="resize: vertical;min-height: 60px;" id="message_uz" class="form-control" ng-model="node.descriptions.UZ" init-focus required/></textarea>
+                            <pre class="textarea-options"><code>&lt;b&gt;</code>,<code>&lt;i&gt;</code>,<code>&lt;pre&gt;</code>,<code>&lt;code&gt;</code>
+                            <button type="button" class="emoji-btn pull-right" data-toggle="modal" onclick="window.fieldId='message_uz';" data-target="#emojiModal">😊</button></pre>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-hide="node.messages">
+                        <label for="imageInputFile1">Выберите изображение</label>
+                        <input type="file" ng-model='node.image' id="imageInputFile1" upload-file language="l1"/>
+                        <span class="pull-right message-img" ng-if="node.file1 && node.file1.length > 0">
+                            <span class="remove glyphicon glyphicon-remove" ng-click="deleteImage(1)"></span>
+                            <img ng-src='{{node.file1}}' alt='Изображение' height="45px" width="45px"/>
+                        </span>
+                    </div>
+                </div>
+
+                <div id="l2" class="tab-pane fade">
+                    <h4>Контент на русском</h4>
+                    <div class="properties edit">
+                        <h5>Надпись
+                            <label class="pull-right">
+                                <input type="checkbox" ng-model="node.clear" name="options" autocomplete="off"> Растянуть
+                            </label>
+                        </h5>
+
+                        <div class="input-group input-group-sm"  style="margin-bottom: 5px;">
+                            <input type="text" class="form-control" id="title_ru" ng-model="node.titles.RU" init-focus required/>
+                            <span class="input-group-btn">
+                                <button type="button" data-toggle="modal" class="btn btn-default" onclick="window.fieldId='title_ru';" data-target="#emojiModal">😊</button>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="properties edit">
+                        <h5>Сообщение</h5>
+                        <div class="input-group input-group-sm" style="width: 100%;">
+                            <textarea rows="5" style="resize: vertical;min-height: 60px;" id="message_ru" class="form-control" ng-model="node.descriptions.RU" init-focus required/></textarea>
+                            <pre class="textarea-options"><code>&lt;b&gt;</code>,<code>&lt;i&gt;</code>,<code>&lt;pre&gt;</code>,<code>&lt;code&gt;</code>
+                            <button type="button" class="emoji-btn pull-right" data-toggle="modal" onclick="window.fieldId='message_ru';" data-target="#emojiModal">😊</button></pre>
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-hide="node.messages">
+                        <label for="imageInputFile2">Выберите изображение</label>
+                        <input type="file" ng-model='node.image2' id="imageInputFile2" upload-file language="l2"/>
+                        <span class="pull-right message-img" ng-if="node.file2 && node.file2.length > 0">
+                            <span class="remove glyphicon glyphicon-remove" ng-click="deleteImage(2)"></span>
+                            <img ng-src='{{node.file2}}' alt='Изображение' height="45px" width="45px"/>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="url" ng-hide="node.messages">
+                <hr>
+                <h5>Ссылка</h5>
+                <input type="text" ng-model="node.url" class="form-control" init-focus />
+            </div>
+
+            <div class="action" ng-hide="node.messages">
+                <!--<input type="text" ng-model="node.action" class="form-control" init-focus />-->
+                <div class="form-group">
+                    <label for="sel1">Действие:</label>
+                    <select ng-model="node.action" class="form-control" id="sel1">
+                        <option value="">Нет</option>
+                        <option value="/back">Назад</option>
+                        <option value="/menu">Главное меню</option>
+                        <option value="/position">Запросить локацию</option>
+                        <option value="/userprofile">Профиль абонента</option>
+                    </select>
+                </div>
+            </div>
+            <div class="messages" ng-if="node.messages">
+                <h5>Тексты команд</h5>
+                <div class="input-group input-group-sm"  style="margin-bottom: 5px;" ng-if="node.messages.lang">
+                    <span class="input-group-addon">/lang</span>
+                    <input type="text" class="form-control" ng-model="node.messages.lang" init-focus required/>
+                </div>
+                <div class="input-group input-group-sm"  style="margin-bottom: 5px;" ng-if="node.messages.start">
+                    <span class="input-group-addon">/start</span>
+                    <input type="text" class="form-control" ng-model="node.messages.start" init-focus required/>
+                </div>
+                <div class="input-group input-group-sm"  style="margin-bottom: 5px;" ng-if="node.messages.help">
+                    <span class="input-group-addon">/help</span>
+                    <input type="text" class="form-control" ng-model="node.messages.help" init-focus required/>
+                </div>
+            </div>
+
+            <!-- <div class="properties edit">
+
+                <h5>Языки <span class="glyphicon glyphicon-plus" ng-click="addAction()"></span></h5>
+                <ul>
+                    <li ng-repeat="action in node.actions track by $index">
+                        <input type="text" ng-model="node.actions[$index]" init-focus />  <span class="remove glyphicon glyphicon-remove" ng-click="deleteAction($index)"></span>
+                    </li>
+                </ul>
+            </div> -->
+        </div>
+        <div class="panel-action">
+            <button type="button" ng-click="addNode()" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> Add</button>
+            <button type="button" ng-click="deleteNode()" ng-disabled="node.messages" class="btn btn-warning"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+        <div class="panel-action">
+            <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> Save</button>
+            <button type="button" ng-click="leaveEdit()" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,9 @@
+<div class="main panel panel-default">
+  <div class="panel-heading">Добро пожаловать ! (<a href="/logout">Выйти</a>)</div>
+  <div class="panel-body" style="padding: 0;">
+    <div ng-if="hasHistory()" class="json-upate-label">
+      <a ng-click="undo()" class="btn btn-default btn-sm">назад</a>
+      <a ng-click="save()" class="btn btn-default btn-sm btn-primary">отправить</a>
+    </div>
+  </div>
+</div>
